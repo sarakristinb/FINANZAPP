@@ -1,11 +1,195 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>FinanzApp - Iniciar Sesión</title>
+
+    <!-- Framework Bulma CSS (vía CDN) para estructura y columnas -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+
+    <!-- Hoja de estilos personalizada (Maneja el diseño oscuro y el cambio de pestaña sin JS) -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
+
+    <!-- ====================================================================
+         1. ENCABEZADO SUPERIOR: Logo y marca
+         ==================================================================== -->
+    <header class="p-4">
+        <div class="logo">
+            <span class="logo-badge">📈</span>
+            <span class="logo-title">FINANZAPP</span>
+        </div>
+    </header>
+
+    <!-- ====================================================================
+         2. CONTENEDOR PRINCIPAL CON EL SISTEMA DE COLUMNAS DE BULMA
+         ==================================================================== -->
+    <main class="section">
+        <div class="container">
+            <div class="columns is-vcentered is-centered">
+
+                <!-- --------------------------------------------------------
+                     COLUMNA IZQUIERDA: Textos de bienvenida e imagen
+                     -------------------------------------------------------- -->
+                <div class="column is-5 has-text-centered">
+                    <h1 class="title is-2 is-gold">FINANZAPP</h1>
+                    <h2 class="subtitle is-4 is-white">Tu dinero bajo control</h2>
+                    <p class="info-desc">No gastes, invierte de manera inteligente con nosotros.</p>
+                    
+                    <div class="image-container">
+                        <img 
+                            src="https://images.unsplash.com/photo-1623118176012-9b0c6fa0712d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                            alt="Billete de 100 dólares" 
+                            class="franklin-img"
+                        >
+                    </div>
+                </div>
+
+                <!-- --------------------------------------------------------
+                     COLUMNA DERECHA: Tarjeta con formularios (Puro HTML y CSS)
+                     -------------------------------------------------------- -->
+                <div class="column is-5">
+                    <div class="box">
+
+                        <!--
+                            TÉCNICA DE PESTAÑAS CON PURO HTML Y CSS (SIN JS):
+                            Usamos dos inputs de tipo radio ocultos con el mismo 'name'.
+                            Al hacer clic en un <label>, el navegador marca el radio
+                            correspondiente y CSS se encarga de mostrar u ocultar
+                            el formulario adecuado usando el selector ':checked'.
+                        -->
+                        <input type="radio" name="auth_toggle" id="tab-login-radio" class="tab-radio" checked>
+                        <input type="radio" name="auth_toggle" id="tab-register-radio" class="tab-radio">
+
+                        <!-- PESTAÑAS VISIBLES: Las etiquetas <label> activan los radios por su atributo 'for' -->
+                        <div class="auth-tabs">
+                            <label for="tab-login-radio" class="auth-tab tab-login-btn">Iniciar Sesión</label>
+                            <label for="tab-register-radio" class="auth-tab tab-register-btn">Registro</label>
+                        </div>
+
+                        <!-- ================================================
+                             FORMULARIO 1: INICIAR SESIÓN
+                             (Se muestra cuando #tab-login-radio está :checked)
+                             ================================================ -->
+                        <form id="form-login" class="auth-form" action="#" method="POST">
+                            
+                            <!-- Campo Email -->
+                            <div class="field">
+                                <label class="label">Email</label>
+                                <div class="control">
+                                    <input 
+                                        class="input" 
+                                        type="email" 
+                                        name="email" 
+                                        placeholder="e.g. alex@example.com" 
+                                        required 
+                                        autocomplete="email"
+                                    />
+                                </div>
+                            </div>
+
+                            <!-- Campo Password -->
+                            <div class="field">
+                                <label class="label">Password</label>
+                                <div class="control">
+                                    <input 
+                                        class="input" 
+                                        type="password" 
+                                        name="password" 
+                                        placeholder="********" 
+                                        required 
+                                        autocomplete="current-password"
+                                    />
+                                </div>
+                            </div>
+
+                            <!-- Botón de Iniciar Sesión -->
+                            <button type="submit" class="button is-primary">Sign in</button>
+                        </form>
+
+                        <!-- ================================================
+                             FORMULARIO 2: REGISTRO DE USUARIO
+                             (Se muestra cuando #tab-register-radio está :checked)
+                             ================================================ -->
+                        <form id="form-register" class="auth-form" action="#" method="POST">
+                            
+                            <!-- Campo: Nombre completo -->
+                            <div class="field">
+                                <label class="label">Nombre completo</label>
+                                <div class="control">
+                                    <input 
+                                        class="input" 
+                                        type="text" 
+                                        name="nombre" 
+                                        placeholder="e.g. Alex Pérez" 
+                                        required 
+                                        autocomplete="name"
+                                    />
+                                </div>
+                            </div>
+
+                            <!-- Campo: Email -->
+                            <div class="field">
+                                <label class="label">Email</label>
+                                <div class="control">
+                                    <input 
+                                        class="input" 
+                                        type="email" 
+                                        name="email" 
+                                        placeholder="e.g. alex@example.com" 
+                                        required 
+                                        autocomplete="email"
+                                    />
+                                </div>
+                            </div>
+
+                            <!-- Campo: Contraseña -->
+                            <div class="field">
+                                <label class="label">Password</label>
+                                <div class="control">
+                                    <input 
+                                        class="input" 
+                                        type="password" 
+                                        name="password" 
+                                        placeholder="********" 
+                                        required 
+                                        autocomplete="new-password"
+                                    />
+                                </div>
+                            </div>
+
+                            <!-- Campo: Confirmar Contraseña -->
+                            <div class="field">
+                                <label class="label">Confirmar Password</label>
+                                <div class="control">
+                                    <input 
+                                        class="input" 
+                                        type="password" 
+                                        name="confirm_password" 
+                                        placeholder="********" 
+                                        required 
+                                        autocomplete="new-password"
+                                    />
+                                </div>
+                            </div>
+
+                            <!-- Botón de Registro -->
+                            <button type="submit" class="button is-primary">Crear Cuenta</button>
+                        </form>
+
+                        <!-- Mensaje de seguridad al pie de la tarjeta -->
+                        <p class="security-note">
+                            🛡️ Conexión cifrada vía JWT Secure Authentication
+                        </p>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
 </body>
 </html>
